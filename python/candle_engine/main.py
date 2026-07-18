@@ -19,6 +19,12 @@ from tools.elevenlabs_mcp import tts, configure  # noqa: E402
 
 
 def main() -> int:
+    # Windows consoles often default to cp1252; force UTF-8 where possible
+    try:
+        sys.stdout.reconfigure(encoding="utf-8", errors="replace")  # type: ignore[attr-defined]
+        sys.stderr.reconfigure(encoding="utf-8", errors="replace")  # type: ignore[attr-defined]
+    except Exception:
+        pass
     parser = argparse.ArgumentParser(prog="candle-engine")
     sub = parser.add_subparsers(dest="cmd", required=True)
 

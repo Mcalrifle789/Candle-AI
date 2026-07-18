@@ -49,7 +49,7 @@ def tts(text: str, api_key: str, voice_id: str = "21m00Tcm4TlvDq8ikWAM") -> str:
     try:
         with urllib.request.urlopen(req, timeout=60) as resp:
             out.write_bytes(resp.read())
-        return f"ElevenLabs TTS saved → {out}"
+        return f"ElevenLabs TTS saved -> {out}"
     except urllib.error.HTTPError as exc:
         body = exc.read().decode("utf-8", errors="ignore")
         return f"ElevenLabs HTTP {exc.code}: {body[:400]}"

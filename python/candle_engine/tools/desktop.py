@@ -21,7 +21,7 @@ def list_desktop(path: str) -> str:
             entries.append(f"  [{kind}] {child.name}{size}")
     except PermissionError:
         return f"Permission denied reading desktop: {p}"
-    header = f"Desktop access enabled → {p}\nItems ({len(entries)}):"
+    header = f"Desktop access enabled -> {p}\nItems ({len(entries)}):"
     return header + ("\n" + "\n".join(entries) if entries else "\n  (empty)")
 
 
